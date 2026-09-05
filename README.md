@@ -51,10 +51,7 @@ DVLD is a Windows Forms desktop application that models the core operations of a
 - Passwords are hashed before being stored in the database
 - Login/authentication screen
 
-**Reports**
-- Generate reports (e.g., licenses issued, applicants, tests) for record-keeping
 
-> 💡 Adjust this list to exactly match the modules you implemented (e.g., if traffic violations or printable license cards are included).
 
 ## 🏗 Architecture
 
@@ -132,10 +129,15 @@ DVLD-Driving-License-Management-System/
 
 
 ![Login Screen](screenshots/LoginScreen.png)
+
 ![Main Screen](screenshots/MainScreen.png)
+
 ![Manage Users Screen](screenshots/ManageUsersScreen.png)
+
 ![Change Password Screen](screenshots/ChangePasswordScreen.png)
+
 ![Issue License Screen](screenshots/IssueLicense.png)
+
 ![Manage Local Applications Screen](screenshots/ManageLocalAppScreen.png)
 
 
