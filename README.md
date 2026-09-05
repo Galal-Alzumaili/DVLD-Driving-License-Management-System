@@ -122,9 +122,7 @@ DVLD-Driving-License-Management-System/
 
 1. Open **SQL Server Management Studio (SSMS)**.
 2. Create a new database (e.g., `DVLD`).
-3. Run the provided database script (`.sql` file) to create tables, stored procedures, and seed data.
-   > If you haven't added a `.sql` script to the repo yet, consider exporting your schema (Tasks → Generate Scripts in SSMS) and committing it under a `Database/` folder so others can set up the project easily.
-4. Update the connection string in the app to match your server name and database name.
+3. Update the connection string in the app to match your server name and database name.
 
 ## 🖼 Screenshots
 
