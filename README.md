@@ -134,14 +134,14 @@ DVLD-Driving-License-Management-System/
 
 > Add screenshots of the main screens (login, applicant search, issue license, test appointments, etc.) here to give visitors a quick visual overview of the app.
 
-```
+
 ![Login Screen](screenshots/LoginScreen.png)
 ![Main Screen](screenshots/MainScreen.png)
 ![Manage Users Screen](screenshots/ManageUsersScreen.png)
 ![Change Password Screen](screenshots/ChangePasswordScreen.png)
 ![Issue License Screen](screenshots/IssueLicense.png)
 ![Manage Local Applications Screen](screenshots/ManageLocalAppScreen.png)
-```
+
 
 ## 🔮 Future Improvements
 
