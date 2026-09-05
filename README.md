@@ -51,24 +51,16 @@ DVLD is a Windows Forms desktop application that models the core operations of a
 - Passwords are hashed before being stored in the database
 - Login/authentication screen
 
-<<<<<<< HEAD
 **Reports**
 - Generate reports (e.g., licenses issued, applicants, tests) for record-keeping
 
 > 💡 Adjust this list to exactly match the modules you implemented (e.g., if traffic violations or printable license cards are included).
-=======
-
->>>>>>> 9827e6d5c508c17438f8e5bfdec5c649b723ec80
 
 ## 🏗 Architecture
 
 The system follows a classic **3-Tier Architecture**, keeping each layer independent and replaceable:
 
-<<<<<<< HEAD
 ```
-=======
-
->>>>>>> 9827e6d5c508c17438f8e5bfdec5c649b723ec80
 ┌───────────────────────────┐
 │   Presentation Layer       │  → WinForms UI (11 - DVLD Project)
 ├───────────────────────────┤
@@ -78,11 +70,7 @@ The system follows a classic **3-Tier Architecture**, keeping each layer indepen
 ├───────────────────────────┤
 │   SQL Server Database       │
 └───────────────────────────┘
-<<<<<<< HEAD
 ```
-=======
-
->>>>>>> 9827e6d5c508c17438f8e5bfdec5c649b723ec80
 
 - **Presentation Layer** – WinForms UI responsible only for user interaction and displaying data.
 - **Business Layer** – Encapsulates business rules, validation, and workflow logic (e.g., a person can't get a license without passing all required tests).
@@ -102,6 +90,15 @@ This separation makes the codebase easier to maintain, test, and extend — for 
 
 ## 📁 Project Structure
 
+```
+DVLD-Driving-License-Management-System/
+│
+├── 11 - DVLD Project/           # Presentation Layer (WinForms UI)
+├── DVLD - Business Layer/       # Business Logic Layer
+├── DVLD - Dataccess Layer/      # Data Access Layer (ADO.NET)
+├── 11 - DVLD Project.sln        # Visual Studio solution file
+└── README.md
+```
 
 ## 🚀 Getting Started
 
@@ -129,7 +126,6 @@ This separation makes the codebase easier to maintain, test, and extend — for 
 
 1. Open **SQL Server Management Studio (SSMS)**.
 2. Create a new database (e.g., `DVLD`).
-<<<<<<< HEAD
 3. Run the provided database script (`.sql` file) to create tables, stored procedures, and seed data.
    > If you haven't added a `.sql` script to the repo yet, consider exporting your schema (Tasks → Generate Scripts in SSMS) and committing it under a `Database/` folder so others can set up the project easily.
 4. Update the connection string in the app to match your server name and database name.
@@ -138,16 +134,7 @@ This separation makes the codebase easier to maintain, test, and extend — for 
 
 > Add screenshots of the main screens (login, applicant search, issue license, test appointments, etc.) here to give visitors a quick visual overview of the app.
 
-```
-![Login Screen](docs/screenshots/login.png)
-![Issue License](docs/screenshots/issue-license.png)
-```
-=======
-3. Update the connection string in the app to match your server name and database name.
-
-## 🖼 Screenshots
-
-
+``
 ![Login Screen](screenshots/LoginScreen.png)
 
 ![Main Screen](screenshots/MainScreen.png)
@@ -159,8 +146,7 @@ This separation makes the codebase easier to maintain, test, and extend — for 
 ![Issue License Screen](screenshots/IssueLicense.png)
 
 ![Manage Local Applications Screen](screenshots/ManageLocalAppScreen.png)
-
->>>>>>> 9827e6d5c508c17438f8e5bfdec5c649b723ec80
+``
 
 ## 🔮 Future Improvements
 
