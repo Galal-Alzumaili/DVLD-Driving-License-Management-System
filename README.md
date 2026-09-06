@@ -55,8 +55,6 @@ DVLD is a Windows Forms desktop application that models the core operations of a
 **Reports**
 - Generate reports (e.g., licenses issued, applicants, tests) for record-keeping
 
-> 💡 Adjust this list to exactly match the modules you implemented (e.g., if traffic violations or printable license cards are included).
-
 ## 🏗 Architecture
 
 The system follows a classic **3-Tier Architecture**, keeping each layer independent and replaceable:
@@ -97,6 +95,8 @@ DVLD-Driving-License-Management-System/
 ├── 11 - DVLD Project/           # Presentation Layer (WinForms UI)
 ├── DVLD - Business Layer/       # Business Logic Layer
 ├── DVLD - Dataccess Layer/      # Data Access Layer (ADO.NET)
+├── screenshots/                 # App screenshots used in this README
+├── Database/                    # Database creation script
 ├── 11 - DVLD Project.sln        # Visual Studio solution file
 └── README.md
 ```
@@ -147,24 +147,22 @@ No other sample data (applicants, drivers, licenses, applications...) is include
 ## 🖼 Screenshots
 
 ### Login Screen
-![Login Screen](docs/screenshots/login.png)
+![Login Screen](screenshots/LoginScreen.png)
 
 ### Main Screen
-![Main Screen](docs/screenshots/main.png)
+![Main Screen](screenshots/MainScreen.png)
 
 ### Manage Users Screen
-![Manage Users Screen](docs/screenshots/manage-users.png)
+![Manage Users Screen](screenshots/ManageUsersScreen.png)
 
 ### Change Password Screen
-![Change Password Screen](docs/screenshots/change-password.png)
+![Change Password Screen](screenshots/ChangePasswordScreen.png)
 
 ### Issue License Screen
-![Issue License Screen](docs/screenshots/issue-license.png)
+![Issue License Screen](screenshots/IssueLicense.png)
 
 ### Manage Local Applications Screen
-![Manage Local Applications Screen](docs/screenshots/manage-local-applications.png)
-
-> 📝 If any image doesn't render, double check the file name and extension match **exactly** (case-sensitive) what's inside `docs/screenshots/` in the repo.
+![Manage Local Applications Screen](screenshots/ManageLocalAppScreen.png)
 
 ## 🔮 Future Improvements
 
