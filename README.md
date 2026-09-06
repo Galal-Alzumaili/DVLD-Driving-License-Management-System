@@ -23,7 +23,7 @@ This project was built as a hands-on exercise to apply solid software architectu
 
 ## 🧭 Overview
 
-DVLD is a Windows Forms desktop application that models the core operations of a driving license authority. It covers people/applicant management, driving tests, license issuance (local & international), license renewal/replacement, license detention/release, user accounts, and system audit logging — all backed by a normalized SQL Server database and accessed through a hand-written ADO.NET data layer (no ORM), giving full control over queries, stored procedures, and transactions.
+DVLD is a Windows Forms desktop application that models the core operations of a driving license authority. It covers people/applicant management, driving tests, license issuance (local & international), license renewal/replacement, license detention/release, and user accounts — all backed by a normalized SQL Server database and accessed through a hand-written ADO.NET data layer (no ORM), using parameterized SQL queries for full control over data access and transactions.
 
 ## ✨ Features
 
@@ -47,46 +47,35 @@ DVLD is a Windows Forms desktop application that models the core operations of a
 - Create and track license applications (new license, renewal, replacement, international) with status and fees
 
 **Users & Security**
-- User accounts with role-based access
-- Passwords are hashed before being stored in the database
+- User accounts with active/inactive status
 - Login/authentication screen
 
-<<<<<<< HEAD
+> ⚠️ **Note:** Passwords are currently stored as plain text for simplicity. Hashing passwords (e.g., with BCrypt) before storage is listed under [Future Improvements](#-future-improvements).
+
 **Reports**
 - Generate reports (e.g., licenses issued, applicants, tests) for record-keeping
 
 > 💡 Adjust this list to exactly match the modules you implemented (e.g., if traffic violations or printable license cards are included).
-=======
-
->>>>>>> 9827e6d5c508c17438f8e5bfdec5c649b723ec80
 
 ## 🏗 Architecture
 
 The system follows a classic **3-Tier Architecture**, keeping each layer independent and replaceable:
 
-<<<<<<< HEAD
 ```
-=======
-
->>>>>>> 9827e6d5c508c17438f8e5bfdec5c649b723ec80
 ┌───────────────────────────┐
 │   Presentation Layer       │  → WinForms UI (11 - DVLD Project)
 ├───────────────────────────┤
 │   Business Logic Layer     │  → Validation & business rules (DVLD - Business Layer)
 ├───────────────────────────┤
-│   Data Access Layer         │  → ADO.NET + Stored Procedures (DVLD - Dataccess Layer)
+│   Data Access Layer         │  → ADO.NET + Parameterized SQL Queries (DVLD - Dataccess Layer)
 ├───────────────────────────┤
 │   SQL Server Database       │
 └───────────────────────────┘
-<<<<<<< HEAD
 ```
-=======
-
->>>>>>> 9827e6d5c508c17438f8e5bfdec5c649b723ec80
 
 - **Presentation Layer** – WinForms UI responsible only for user interaction and displaying data.
 - **Business Layer** – Encapsulates business rules, validation, and workflow logic (e.g., a person can't get a license without passing all required tests).
-- **Data Access Layer** – Handles all communication with SQL Server via ADO.NET and stored procedures, isolating SQL from the rest of the application.
+- **Data Access Layer** – Handles all communication with SQL Server via ADO.NET using parameterized inline SQL queries, isolating SQL from the rest of the application.
 
 This separation makes the codebase easier to maintain, test, and extend — for example, the UI could be swapped for a web front-end without touching the business or data layers.
 
@@ -96,12 +85,21 @@ This separation makes the codebase easier to maintain, test, and extend — for 
 |-------------------|----------------------------------|
 | UI                | Windows Forms (.NET, C#)        |
 | Business Logic    | C# (Class Library)              |
-| Data Access       | ADO.NET, Stored Procedures      |
+| Data Access       | ADO.NET (parameterized inline SQL queries) |
 | Database          | Microsoft SQL Server            |
 | Architecture      | 3-Tier Architecture             |
 
 ## 📁 Project Structure
 
+```
+DVLD-Driving-License-Management-System/
+│
+├── 11 - DVLD Project/           # Presentation Layer (WinForms UI)
+├── DVLD - Business Layer/       # Business Logic Layer
+├── DVLD - Dataccess Layer/      # Data Access Layer (ADO.NET)
+├── 11 - DVLD Project.sln        # Visual Studio solution file
+└── README.md
+```
 
 ## 🚀 Getting Started
 
@@ -127,43 +125,50 @@ This separation makes the codebase easier to maintain, test, and extend — for 
 
 ## 🗄 Database Setup
 
-1. Open **SQL Server Management Studio (SSMS)**.
-2. Create a new database (e.g., `DVLD`).
-<<<<<<< HEAD
-3. Run the provided database script (`.sql` file) to create tables, stored procedures, and seed data.
-   > If you haven't added a `.sql` script to the repo yet, consider exporting your schema (Tasks → Generate Scripts in SSMS) and committing it under a `Database/` folder so others can set up the project easily.
-4. Update the connection string in the app to match your server name and database name.
+A ready-to-run SQL script is included in the repo under `Database/DVLD_Database_Script.sql`. It creates the `DVLD` database with all tables, views, and relationships, plus:
+- **Lookup/reference data** the app needs to function: Countries, License Classes, Application Types, and Test Types.
+- **One default `admin` account** so you have a working login on first run.
+
+No other sample data (applicants, drivers, licenses, applications...) is included — you're expected to create your own data through the application itself.
+
+1. Open **SQL Server Management Studio (SSMS)** and connect to your local SQL Server instance.
+2. Open the file `Database/DVLD_Database_Script.sql` (**File → Open → File...**).
+3. Execute the script (press `F5` or click **Execute**). This will create the `DVLD` database with its schema and lookup data.
+4. Update the connection string in the app (typically in the Data Access Layer or an `App.config` file) to match your SQL Server instance name.
+
+### Default login
+
+| Username | Password |
+|----------|----------|
+| `admin`  | `1234`   |
+
+> ⚠️ This is a default account for local testing only — passwords are stored as plain text in the current version (see [Future Improvements](#-future-improvements)). Change this password immediately, and never reuse it in a production environment.
 
 ## 🖼 Screenshots
 
-> Add screenshots of the main screens (login, applicant search, issue license, test appointments, etc.) here to give visitors a quick visual overview of the app.
-
-```
+### Login Screen
 ![Login Screen](docs/screenshots/login.png)
-![Issue License](docs/screenshots/issue-license.png)
-```
-=======
-3. Update the connection string in the app to match your server name and database name.
 
-## 🖼 Screenshots
+### Main Screen
+![Main Screen](docs/screenshots/main.png)
 
+### Manage Users Screen
+![Manage Users Screen](docs/screenshots/manage-users.png)
 
-![Login Screen](screenshots/LoginScreen.png)
+### Change Password Screen
+![Change Password Screen](docs/screenshots/change-password.png)
 
-![Main Screen](screenshots/MainScreen.png)
+### Issue License Screen
+![Issue License Screen](docs/screenshots/issue-license.png)
 
-![Manage Users Screen](screenshots/ManageUsersScreen.png)
+### Manage Local Applications Screen
+![Manage Local Applications Screen](docs/screenshots/manage-local-applications.png)
 
-![Change Password Screen](screenshots/ChangePasswordScreen.png)
-
-![Issue License Screen](screenshots/IssueLicense.png)
-
-![Manage Local Applications Screen](screenshots/ManageLocalAppScreen.png)
-
->>>>>>> 9827e6d5c508c17438f8e5bfdec5c649b723ec80
+> 📝 If any image doesn't render, double check the file name and extension match **exactly** (case-sensitive) what's inside `docs/screenshots/` in the repo.
 
 ## 🔮 Future Improvements
 
+- Hash user passwords (e.g., with BCrypt) instead of storing them as plain text
 - Add unit tests for the Business Layer
 - Migrate the Data Access Layer to use an ORM (e.g., Entity Framework) or Dapper
 - Add a reporting module with exportable PDF/Excel reports
@@ -171,8 +176,7 @@ This separation makes the codebase easier to maintain, test, and extend — for 
 
 ## 📄 License
 
-This project is open source. Feel free to use it for learning purposes.  
-*(Add your preferred license, e.g., MIT, or state "All rights reserved" if you'd rather keep it closed.)*
+This project is licensed under the [MIT License](LICENSE) — feel free to use, modify, and learn from it.
 
 ---
 
